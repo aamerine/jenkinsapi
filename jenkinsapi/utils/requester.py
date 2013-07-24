@@ -62,7 +62,8 @@ class Requester(object):
 
     def post_url(self, url, params=None, data=None, headers=None):
         requestKwargs = self.get_request_dict(url, params, data, headers)
-        return requests.post(url, **requestKwargs)
+        requestKwargs['verify'] = False
+	return requests.post(url, **requestKwargs)
 
     def post_xml_and_confirm_status(self, url, params=None, data=None, valid=None):
         headers = {'Content-Type': 'text/xml'}
