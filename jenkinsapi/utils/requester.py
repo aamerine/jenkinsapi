@@ -56,7 +56,8 @@ class Requester(object):
 
     def get_url(self, url, params=None, headers=None):
         requestKwargs = self.get_request_dict(url, params, None, headers)
-        return requests.get(url, **requestKwargs)
+        requestKwargs['verify'] = False
+	return requests.get(url, **requestKwargs)
 
 
     def post_url(self, url, params=None, data=None, headers=None):
